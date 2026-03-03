@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holi Celebration 2026 | Digital Carnival</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="bg-blur">
+        <div class="splash s1"></div>
+        <div class="splash s2"></div>
+        <div class="splash s3"></div>
+    </div>
+
+    <div id="welcome-screen" class="screen-overlay">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1 class="login-title">🎨 HOLI CARNIVAL 2026 🎨</h1>
+                    <p class="login-subtitle">Colors of Joy, Moments of Fun!</p>
+                </div>
+                
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="userid-input" class="form-label">🆔 Your Unique ID</label>
+                        <input type="number" id="userid-input" placeholder="Enter ID (1-9999)" min="1" max="9999" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username-input" class="form-label">👤 Your Name</label>
+                        <input type="text" id="username-input" placeholder="Enter your name" maxlength="20" class="form-input">
+                    </div>
+                    
+                    <p id="error-msg" class="error-msg"></p>
+                    
+                    <button onclick="registerUser()" class="btn-login">🎉 Join Holi Celebration</button>
+                </div>
+                
+                <div class="login-footer">
+                    <p>🌈 Let's celebrate with colors and fun! 🌈</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-app" class="hidden">
+        <header class="hero">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <span>ID: <strong id="display-id">0</strong></span>
+                    <span>User: <strong id="display-name">Guest</strong></span>
+                </div>
+                <button onclick="logoutUser()" class="btn-logout">🚪 Logout</button>
+            </div>
+            <h1 class="holi-banner">HAPPY HOLI 🎨</h1>
+            <div id="star-layer"></div>
+        </header>
+
+        <div class="container">
+            <section class="glass-card combined-box">
+                <h3>🎨 Upload & Burst Holi Balloons</h3>
+                
+                <div class="upload-section">
+                    <input type="file" id="image-upload" accept="image/*" hidden>
+                    <label for="image-upload" class="btn-secondary">🖼️ Choose Image</label>
+                </div>
+
+                <div class="game-container">
+                    <div id="game-arena">
+                        <img id="display-photo" src="" class="hidden">
+                        <div id="balloon-layer"></div>
+                    </div>
+                    <div id="preview-box"></div>
+                </div>
+
+                <div id="share-link-area" class="hidden">
+                    <p>Share this link: <code id="link-text"></code></p>
+                    <button onclick="copyLink()" class="btn-small">Copy Link 🔗</button>
+                </div>
+
+                <div class="score-board">
+                    <span>Current Score: <strong id="score-val">0</strong></span>
+                </div>
+
+                <div class="button-group">
+                    <button id="save-btn" class="btn-primary hidden" onclick="finalizePhoto()">Save & Share</button>
+                    <button id="burst-btn" onclick="startBalloonWave()" class="btn-primary">🎈 Burst Holi Balloons</button>
+                </div>
+            </section>
+
+            <section class="glass-card">
+                <h3>🏆 Holi Leaderboard</h3>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
+                        </thead>
+                        <tbody id="leaderboard-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <audio id="pop-sound" src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
